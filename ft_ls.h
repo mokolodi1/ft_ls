@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 12:55:38 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/23 19:19:35 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/24 15:02:42 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,14 @@ typedef struct			s_strlens
 }						t_strlens;
 
 void					handle_ls(t_list **arguments, t_options *options);
+void					read_through_directory(char *folder_name
+												, t_list **directory_list
+												, t_list **screw_ups);
 void					handle_directories(t_list *folder_name
 													, t_list *directory
 													, t_options *options);
 void					handle_directory(char *folder_name
-													, DIR *directory
+													, t_list *directory
 													, t_bool print_folder
 													, t_options *options);
 void					print_entries(t_list *entries, t_options *options);

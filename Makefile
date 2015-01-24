@@ -6,7 +6,7 @@
 #    By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/04 17:52:57 by tfleming          #+#    #+#              #
-#    Updated: 2015/01/22 20:46:55 by tfleming         ###   ########.fr        #
+#    Updated: 2015/01/24 14:57:04 by tfleming         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,6 +18,7 @@ LIBFT =			"libft/"
 
 COMPILED =		main.o \
 				handle_ls.o \
+				read_through_directory.o \
 				handle_directories.o \
 				handle_directory.o \
 				print_entries.o \

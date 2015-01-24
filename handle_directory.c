@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/15 19:00:02 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/23 20:06:57 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/24 15:02:33 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,21 @@ static void			find_and_print_recursives(t_list *entries
 		handle_recursive(&recursives, options);
 }
 
-void				handle_directory(char *folder_name, DIR *directory
+void				handle_directory(char *folder_name, t_list *directory
 										, t_bool print_folder
 										, t_options *options)
 {
-	struct dirent	*just_read;
 	t_list			*entries;
 	t_entry			*entry;
 
 	entries = NULL;
-	while ((just_read = readdir(directory))
-			&& ((entry = make_entry(folder_name, ft_strdup(just_read->d_name)
-									, options))))
+	while (directory && (entry = make_entry(folder_name
+										, ft_strdup((char*)directory->data)
+								, options)))
+	{
 		ft_list_push_front(&entries, entry);
-	closedir(directory);
+		directory = directory->next;
+	}
 	if (entries)
 	{
 		sort_list_entries(&entries, options);

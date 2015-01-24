@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 16:28:20 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/21 18:55:31 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/24 14:54:09 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void				handle_directories(t_list *folder_name
 		if (options->print_folder_names_before && print_folder)
 			print_folder_name_before(string, options);
 		if (directory->data)
-			handle_directory(string, (DIR*)directory->data, print_folder
+			handle_directory(string, (t_list*)directory->data, print_folder
 							, options);
 		folder_name = folder_name->next;
 		directory = directory->next;

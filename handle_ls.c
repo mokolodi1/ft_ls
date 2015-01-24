@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 13:02:14 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/23 18:59:13 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/24 14:57:11 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ static t_bool		should_treat_link_as_screw_up(char *name
 		return (1);
 	}
 	return (0);
-	(void)arguments;
-	(void)this_argument;
 }
 
 static void			setup(t_list **directory_list, t_list **screw_ups
@@ -93,7 +91,6 @@ void				handle_ls(t_list **arguments, t_options *options)
 {
 	t_list		*directory_list;
 	t_list		*this_arg;
-	DIR			*opened;
 	t_list		*screw_ups;
 	char		*folder_name;
 
@@ -107,12 +104,7 @@ void				handle_ls(t_list **arguments, t_options *options)
 												, this_arg, options))
 			ft_list_push_back(&screw_ups, folder_name);
 		else
-		{
-			opened = opendir(folder_name);
-			ft_list_push_back(&directory_list, opened);
-			if (!opened)
-				directory_open_failed(folder_name, &screw_ups);
-		}
+			read_through_directory(folder_name, &directory_list, &screw_ups);
 		this_arg = this_arg->next;
 	}
 	do_screw_ups_and_handling(arguments, &directory_list, &screw_ups, options);
