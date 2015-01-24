@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 12:55:38 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/24 15:02:42 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/24 15:36:14 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ void					prepare_file_options(t_strlens *strlens
 													, t_options *options);
 t_entry					*make_entry(char *folder, char *entry
 													, t_options *options);
-void					sort_list_strings(t_list **list, t_options *options);
 void					sort_list_entries(t_list **list, t_options *options);
 int						compare_last_modified_time(t_stat *first
 													, t_stat *second);

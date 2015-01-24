@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 13:02:14 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/24 14:57:11 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/24 15:37:22 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ static void			do_screw_ups_and_handling(t_list **arguments
 												, t_list **screw_ups
 												, t_options *options)
 {
+	if (options->reverse_sort)
+	{
+		ft_list_reverse(arguments);
+		ft_list_reverse(directory_list);
+		ft_list_reverse(screw_ups);
+	}
 	if (*screw_ups && options->should_handle_screwups)
 	{
 		print_screw_ups(*screw_ups, arguments, options);
@@ -82,6 +88,7 @@ static t_bool		should_treat_link_as_screw_up(char *name
 static void			setup(t_list **directory_list, t_list **screw_ups
 							, t_list **arguments, t_list **this_arg)
 {
+	ft_list_sort(arguments, (int (*)(void*, void*))&ft_strcmp);
 	*directory_list = NULL;
 	*screw_ups = NULL;
 	*this_arg = *arguments;
@@ -94,7 +101,6 @@ void				handle_ls(t_list **arguments, t_options *options)
 	t_list		*screw_ups;
 	char		*folder_name;
 
-	sort_list_strings(arguments, options);
 	setup(&directory_list, &screw_ups, arguments, &this_arg);
 	while (this_arg)
 	{
