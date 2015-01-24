@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 18:42:20 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/23 18:42:57 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/24 16:11:13 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,18 @@ static int			is_a_real_file(char *file)
 	return (0);
 }
 
+static char			*long_to_short_name(char *long_name)
+{
+	char			*start;
+
+	if (ft_strequ(long_name, "/"))
+		return (long_name);
+	start = ft_strchr(long_name, '\0');
+	while (start > long_name && *(start - 1) != '/')
+		start--;
+	return (start);
+}
+
 void				directory_open_failed(char *failing_name
 											, t_list **screw_ups)
 {
@@ -68,7 +80,7 @@ void				directory_open_failed(char *failing_name
 		else
 		{
 			ft_putstr_fd("ft_ls: ", 2);
-			perror(failing_name);
+			perror(long_to_short_name(failing_name));
 		}
 	}
 }
