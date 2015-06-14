@@ -14,7 +14,9 @@ NAME =			ft_ls
 
 CC =			gcc
 FLAGS =			-Wall -Werror -Wextra -g
-LIBFT =			"libft/"
+SRCS =			srcs/
+INCLUDES =		includes/
+LIBFT =			libft/
 
 COMPILED =		main.o \
 				handle_ls.o \
@@ -45,8 +47,8 @@ $(NAME): $(COMPILED)
 	@$(CC) $(FLAGS) -o $(NAME) -L $(LIBFT) -lft $(COMPILED)
 	@echo "made" $(NAME)
 
-$(COMPILED): %.o: %.c
-	@$(CC) -c $(FLAGS) -I $(LIBFT) $< -o $@
+$(COMPILED): %.o: $(SRCS)/%.c
+	@$(CC) -c $(FLAGS) -I $(INCLUDES) -I $(LIBFT) $< -o $@
 
 clean:
 	@make -C $(LIBFT) clean
